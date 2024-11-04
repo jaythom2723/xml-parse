@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char **argv)
-{
-    FILE *fp = fopen()
+#include "xmlparse.h"
 
-    return 0;
+const char *open_xml_file(const char *path)
+{
+    return NULL;
 }
