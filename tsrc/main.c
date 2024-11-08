@@ -14,15 +14,6 @@ int main(void)
         getc(stdin);
         return -1;
     }
-        
-
-    for(; i < 0xFFFF; i++)
-    {
-        if(src[i] == NULL)
-            break;
-    
-        printf("%s\n", src[i]);
-    }
 
     close_xml_file(src);
 

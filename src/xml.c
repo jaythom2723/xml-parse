@@ -7,10 +7,12 @@
 #include "xmlparse.h"
 
 #define MAX_LINES 0xFFFF
+#define MAX_XMLOBJS 0xFFF
 
 FILE *_open_file(const char *path, size_t *size);
 void _get_file_source(FILE *file);
 void _clean_file_source(void);
+XMLOBJ *_process_source(void);
 
 static char *src[MAX_LINES] = { 0 };
 static char **src_ptr = src;
@@ -24,6 +26,7 @@ const char **open_xml_file(const char *path)
 
     _get_file_source(file);
     _clean_file_source();
+    _process_source();
 
     fclose(file);
 
@@ -82,4 +85,22 @@ void _clean_file_source(void)
         ci = (cptr - (src[i]));
         src[i][ci] = '\0';
     }
+}
+
+XMLOBJ *_process_source(void)
+{
+    XMLOBJ *objects = (XMLOBJ*) malloc(MAX_XMLOBJS * sizeof(XMLOBJ));
+
+    size_t numLines = (src_ptr - src);
+    int i;
+
+    for(i = 0; i < numLines; i++)
+    {
+        printf("%s\n", src[i]);
+    }
+
+    free((void*) objects);
+    objects = NULL;
+
+    return objects;
 }
