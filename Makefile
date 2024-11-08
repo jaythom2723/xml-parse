@@ -5,7 +5,7 @@ PPFLAGS=-I./include
 all: tester.exe
 
 run:
-	./bin/tester.exe
+	./bin/tester/tester.exe
 
 xml.o: $(wildcard ./src/*.c)
 	$(CC) $^ $(LDFLAGS) $(PPFLAGS) -c -o $@
